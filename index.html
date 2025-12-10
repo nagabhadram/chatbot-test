@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+</head>
+<body>
+    
+    <!-- Your website content here -->
+    <h1>Welcome to My Website</h1>
+    <p>Your content...</p>
+    
+    <!-- Button to open chat -->
+    <button onclick="openChat()" style="position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        💬 Chat with us
+    </button>
+
+    <!-- Boost.ai Chat Panel - Add before closing body tag -->
+    <script src="https://pronix.boost.ai/chatPanel/chatPanel.js"></script>
+<script>
+  var options = {
+    chatPanel: {
+      header: {
+        title: "Customer Support"
+      },
+      styling: {
+        primaryColor: "#007bff",
+        pace: "fast",
+        size: "medium"
+      },
+      settings: {
+        startLanguage: "en-US",
+        openTextLinksInNewTab: true
+      }
+    }
+  };
+  
+  var boost = window.boostInit("pronix", options);
+</script>
+
+</body>
+<<<<<<< HEAD
+</html>
+=======
+</html>
+>>>>>>> 5cbda61b09e29e011cab2cdc0364018ff49bbfa8
