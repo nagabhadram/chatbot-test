@@ -36,14 +36,22 @@
     </div>
 
     <h1>Welcome to My Website</h1>
-    <p>Your content...</p>
+
     
     <!-- Chat Button -->
     <button onclick="openChat()" style="position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; background: #007bff; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999;">
         💬 Chat with us
     </button>
 
-    <!-- Boost.ai Chat Panel - MUST BE LOADED FIRST -->
+    <!-- REQUIRED: Boost.ai Proactive Settings -->
+    <script>
+        window.boostSettings = {
+            proactiveEnabled: true,
+            enableProactivityForSmallDevices: true   // allow mobile proactivity too
+        };
+    </script>
+
+    <!-- Boost.ai Chat Panel - MUST load after boostSettings -->
     <script src="https://pronix.boost.ai/chatPanel/chatPanel.js"></script>
     <script>
         // Initialize boost.ai
@@ -53,11 +61,6 @@
         function openChat() {
             boost.chatPanel.show();
         }
-        
-        // Optional: Auto-open after 3 seconds
-        // setTimeout(function() {
-        //     boost.chatPanel.show();
-        // }, 3000);
     </script>
 
 </body>
