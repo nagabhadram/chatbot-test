@@ -2,45 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boost.ai Chat Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .test-info {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
     
-    <!-- Your website content here -->
+    <h1>🤖 Boost.ai Chatbot Test</h1>
+    
+    <div class="test-info">
+        <p><strong>Testing Instructions:</strong></p>
+        <ul>
+            <li>Click the blue chat button in the bottom-right corner</li>
+            <li>The chat panel should open</li>
+            <li>Start chatting with the bot!</li>
+        </ul>
+    </div>
+
     <h1>Welcome to My Website</h1>
     <p>Your content...</p>
     
-    <!-- Button to open chat -->
-    <button onclick="openChat()" style="position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    <!-- Chat Button -->
+    <button onclick="openChat()" style="position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; background: #007bff; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999;">
         💬 Chat with us
     </button>
 
-    <!-- Boost.ai Chat Panel - Add before closing body tag -->
+    <!-- Boost.ai Chat Panel - MUST BE LOADED FIRST -->
     <script src="https://pronix.boost.ai/chatPanel/chatPanel.js"></script>
-<script>
-  var options = {
-    chatPanel: {
-      header: {
-        title: "Customer Support"
-      },
-      styling: {
-        primaryColor: "#007bff",
-        pace: "fast",
-        size: "medium"
-      },
-      settings: {
-        startLanguage: "en-US",
-        openTextLinksInNewTab: true
-      }
-    }
-  };
-  
-  var boost = window.boostInit("pronix", options);
-</script>
+    <script>
+        // Initialize boost.ai
+        var boost = window.boostInit("pronix");
+        
+        // Define function to open chat
+        function openChat() {
+            boost.chatPanel.show();
+        }
+        
+        // Optional: Auto-open after 3 seconds
+        // setTimeout(function() {
+        //     boost.chatPanel.show();
+        // }, 3000);
+    </script>
 
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 5cbda61b09e29e011cab2cdc0364018ff49bbfa8
