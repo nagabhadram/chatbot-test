@@ -174,77 +174,15 @@
             line-height: 1.5;
         }
 
-        /* Enhanced Chat Button with your reference styles */
-        .boost-trigger-button {
-            background-color: #552a55;
-            border-radius: 72px;
-            border: 0;
-            box-shadow: 0px 8px 20px rgba(85, 42, 85, 0.8);
-            color: #fff;
-            cursor: pointer;
-            font-family: inherit, sans-serif;
-            font-size: 18px;
-            font-weight: bold;
-            outline: 0;
-            position: fixed;
-            bottom: 24px;
-            right: 48px;
-            padding: 16px 24px;
-            transition: all 200ms;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: buttonBounce 2s infinite;
-        }
-
-        .boost-trigger-button:hover {
-            background-color: rgb(67, 33, 67);
-            box-shadow: 0px 8px 30px rgba(85, 42, 85, 0.8);
-            transform: scale(1.025);
-        }
-
-        .boost-trigger-button:active {
-            transform: scale(0.98);
+        /* Custom styling for Boost.ai button to match your design */
+        /* This will style the Boost.ai generated button */
+        .boost-chat-button {
+            animation: buttonBounce 2s infinite !important;
         }
 
         @keyframes buttonBounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
-        }
-
-        .chat-icon {
-            width: 24px;
-            height: 24px;
-            animation: pulse-icon 1.5s infinite;
-        }
-
-        @keyframes pulse-icon {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        /* Notification badge */
-        .notification-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ff4757;
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            animation: badgePulse 1s infinite;
-        }
-
-        @keyframes badgePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
         }
 
         /* Responsive Design */
@@ -261,40 +199,9 @@
                 padding: 30px 20px;
             }
 
-            .boost-trigger-button {
-                bottom: 16px;
-                right: 16px;
-                padding: 14px 20px;
-                font-size: 16px;
-            }
-
             .features {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Loading animation for chat button */
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-
-        .boost-trigger-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-            );
-            background-size: 1000px 100%;
-            animation: shimmer 3s infinite;
-            border-radius: 72px;
         }
     </style>
 </head>
@@ -311,7 +218,7 @@
                 <h2>💬 How to Get Started</h2>
                 <ul>
                     <li>Click the purple chat button in the bottom-right corner</li>
-                    <li>Type your question </li>
+                    <li>Type your question</li>
                     <li>Get instant, accurate responses powered by AI</li>
                     <li>Available 24/7 to help with your queries</li>
                 </ul>
@@ -336,15 +243,6 @@
             </div>
         </div>
     </div>
-    
-    <!-- Enhanced Chat Button with notification badge -->
-    <button onclick="openChat()" class="boost-trigger-button">        
-        <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-        Chat with us
-        <span class="notification-badge">1</span>
-    </button>
 
     <!-- REQUIRED: Boost.ai Proactive Settings -->
     <script>
@@ -358,6 +256,7 @@
     <script src="https://pronix.boost.ai/chatPanel/chatPanel.js"></script>
     <script>
         // Initialize boost.ai with custom styling
+        // Boost.ai will automatically create the chat button
         var options = {
             chatPanel: {
                 styling: {
@@ -370,24 +269,24 @@
                 },
                 header: {
                     title: "Pronix AI Assistant"
+                },
+                settings: {
+                    // This tells Boost.ai to use its default button (not custom code)
+                    useDefaultChatButton: true
                 }
             }
         };
         
         var boost = window.boostInit("pronix", options);
         
-        // Define function to open chat
-        function openChat() {
-            boost.chatPanel.show();
-            // Hide notification badge after opening
-            document.querySelector('.notification-badge').style.display = 'none';
-        }
-
-        // Optional: Auto-show chat after 10 seconds with animation
+        // Add bounce animation to Boost.ai button once it loads
         setTimeout(function() {
-            const button = document.querySelector('.boost-trigger-button');
-            button.style.animation = 'buttonBounce 0.5s ease-in-out 3';
-        }, 10000);
+            // Find Boost.ai's button and add animation class
+            const boostButton = document.querySelector('[class*="boost"]');
+            if (boostButton) {
+                boostButton.classList.add('boost-chat-button');
+            }
+        }, 1000);
     </script>
 
 </body>
